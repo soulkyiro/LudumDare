@@ -6,14 +6,14 @@ public class NavigationController : MonoBehaviour
 {
     public const string SCENE_INIT = "Init";
     public const string SCENE_MAIN = "Main";
-    public const string SCENE_SCENE0 = "Scene";
+    public const string SCENE_SCENE = "Scene";
 
     public Stack<string> scenes;
 	
 	void Start () {
         scenes = new Stack<string>();
         scenes.Push(CurrentScene);
-        NextScene(SCENE_INIT);
+		NextScene(SCENE_SCENE);
 	}
 
     void Update() {
