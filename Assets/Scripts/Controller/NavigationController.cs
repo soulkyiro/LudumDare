@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class NavigationController : MonoBehaviour
 {
     public const string SCENE_INIT = "Init";
-    public const string SCENE_SCENE0 = "Scene0";
+    public const string SCENE_MAIN = "Main";
+    public const string SCENE_SCENE0 = "Scene";
 
     public Stack<string> scenes;
 	
@@ -34,7 +35,7 @@ public class NavigationController : MonoBehaviour
 
     public void PreviousScene()
     {
-        if (SCENE_INIT == CurrentScene)
+        if (SCENE_INIT == CurrentScene || SCENE_MAIN == CurrentScene)
         {
             Escape();
         }
