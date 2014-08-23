@@ -5,12 +5,14 @@ public class GameController : MonoBehaviour
 {
     private LevelController levelController;
     private NavigationController navigatorController;
+    private GUIController guiController;
 
     public int NUM_MAX_DEATHS = 2;
     private int numOfDeaths= 0;
 
     void Start() {
         navigatorController = ApplicationController.Instance.NavigationController;
+        guiInterface();
     }
 
     public int NumOfDeaths
@@ -23,12 +25,25 @@ public class GameController : MonoBehaviour
     {
         get { return levelController; }
         set { levelController = value; }
+    }    
+    
+    public GUIController GUIController
+    {
+        get { return guiController; }
+        set { guiController = value; }
     }
 
     public void PlayGame() {
         GameObject LevelController = new GameObject();
         LevelController.name = "LevelController";
         LevelController.AddComponent<LevelController>();
+    }
+
+    public void guiInterface()
+    {
+        GameObject GUIController = new GameObject();
+        GUIController.name = "GUIController";
+        GUIController.AddComponent<GUIController>();
     }
 
     private void IncrementNumOfDeaths()
@@ -57,6 +72,7 @@ public class GameController : MonoBehaviour
             navigatorController.RestartScene();      
         }
     }
+
     public void NextLevel() {
         if (navigatorController.CurrentScene == "Scene0") 
         {
