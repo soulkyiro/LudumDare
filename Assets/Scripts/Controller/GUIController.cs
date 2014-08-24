@@ -8,7 +8,8 @@ public class GUIController : MonoBehaviour {
 
     public Texture2D imagenFondo;
     public Texture2D imagenFrente;
-
+    public Texture2D title = Resources.Load("Textures/connected") as Texture2D;
+    public Texture2D tutorial = Resources.Load("Textures/tutorial") as Texture2D;
     public string View
     {
         get { return view; }
@@ -54,6 +55,8 @@ public class GUIController : MonoBehaviour {
 
     void GUIMainPanel()
     {
+        GUI.Box(new Rect(0, 0, (_w/4) * 3, (_h/4)), title);
+
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 2, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PLAY")))
         {
             Debug.Log("PLAY");
@@ -108,7 +111,7 @@ public class GUIController : MonoBehaviour {
     {
         GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "INSTRUCTIONS");
 
-        GUI.Label(new Rect(_w / 6, _h / 6, (_w / 6) * 4, (_h / 6) * 3), "");
+        GUI.Box(new Rect(_w / 9, _h / 9, (_w / 6) * 4, (_h / 6) * 4), tutorial);
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("BACK")))
         {

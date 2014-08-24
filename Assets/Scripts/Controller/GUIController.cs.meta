@@ -6,6 +6,7 @@ MonoImporter:
   - mySkin: {instanceID: 0}
   - imagenFondo: {fileID: 2800000, guid: faaa2bc292d8809469827481c455549b, type: 3}
   - imagenFrente: {fileID: 2800000, guid: e423678025ce1c048aee40052c9bd4c2, type: 3}
+  - title: {fileID: 2800000, guid: 5192c66180a590946bd93c9a87dfc784, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
