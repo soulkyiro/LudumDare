@@ -7,6 +7,7 @@ public class Astronaut : MonoBehaviour {
 	private float fuel;
     private float rocketForce = 1000.0f;
     private float horizontalForce = -1000.0f;
+	private bool isFlying = false;
 	public GameObject trail;
 
     public float RocketForce
