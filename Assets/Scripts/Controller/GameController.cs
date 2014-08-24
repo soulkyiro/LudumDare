@@ -24,8 +24,8 @@ public class GameController : MonoBehaviour
     {
         get { return levelController; }
         set { levelController = value; }
-    }
-
+    }    
+    
     public void PlayGame() {
         GameObject LevelController = new GameObject();
         LevelController.name = "LevelController";
@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
             navigatorController.RestartScene();      
         }
     }
+
     public void NextLevel() {
         if (navigatorController.CurrentScene == "Scene0") 
         {

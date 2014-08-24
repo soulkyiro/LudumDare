@@ -10,10 +10,10 @@ public class NavigationController : MonoBehaviour
 
     public Stack<string> scenes;
 	
-	void Start () {
+	void Awake () {
         scenes = new Stack<string>();
         scenes.Push(CurrentScene);
-		NextScene(SCENE_SCENE);
+        NextScene(SCENE_MAIN);
 	}
 
     void Update() {
