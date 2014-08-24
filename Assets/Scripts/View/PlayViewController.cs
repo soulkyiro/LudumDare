@@ -3,9 +3,8 @@ using System.Collections;
 
 public class PlayViewController : MonoBehaviour {
 
-    void Start()
+    void Start ()
     {
         ApplicationController.Instance.GUIController.View = "PLAY";
-        
     }
 }
