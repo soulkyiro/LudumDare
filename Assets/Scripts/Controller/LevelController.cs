@@ -11,8 +11,6 @@ public class LevelController : MonoBehaviour
 
 	void Start()
     {
-		Debug.Log ("Add level controller to game controller");
-        //ApplicationController.Instance.GameController.LevelController = this;
 		pause = false;
 	}
 
