@@ -61,7 +61,7 @@ public class GUIController : MonoBehaviour {
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 2, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PLAY")))
         {
             Debug.Log("PLAY");
-			ApplicationController.Instance.NavigationController.NextScene("Scene (Silver)");
+			ApplicationController.Instance.NavigationController.NextScene("Scene");
             ApplicationController.Instance.GameController.PlayGame();
         }
 
