@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelController : MonoBehaviour
 {
 
     private bool pause;
-    private int checkPoints;
+	private List<string> letters = new List<string>();
+	private string worlds = "worlds";
 
 	void Start()
     {
-        checkPoints = 0;
-        ApplicationController.Instance.GameController.LevelController = this;
+		Debug.Log ("Add level controller to game controller");
+        //ApplicationController.Instance.GameController.LevelController = this;
 		pause = false;
 	}
 
@@ -55,7 +57,13 @@ public class LevelController : MonoBehaviour
         ApplicationController.Instance.GameController.RestartLevel();
 	}
 
-    public void CheckPointCounts() {
-        checkPoints++;
-    }
+	public void AddLetter (string letter){
+		if (!letters.Contains(letter)){
+			Debug.Log (letter);
+			letters.Add(letter);
+			if (letters.Count == worlds.Length){
+				LevelComplete();
+			}
+		}
+	}
 }
