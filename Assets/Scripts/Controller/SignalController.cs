@@ -44,7 +44,7 @@ public class SignalController : MonoBehaviour {
         {
             check = true;
             Debug.Log("Check Point");
-            ApplicationController.Instance.GameController.LevelController.CheckPointCounts();
+            //ApplicationController.Instance.GameController.LevelController.CheckPointCounts();
         }
     }
 }
