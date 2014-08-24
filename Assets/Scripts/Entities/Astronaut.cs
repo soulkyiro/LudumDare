@@ -7,6 +7,7 @@ public class Astronaut : MonoBehaviour {
 	private float fuel;
     private float rocketForce = 1000.0f;
     private float horizontalForce = -1000.0f;
+	public GameObject trail;
 
     public float RocketForce
     {
@@ -21,23 +22,28 @@ public class Astronaut : MonoBehaviour {
     }
 
 	void Update() {
-		Move();
+		trail.GetComponent<AstronautParticleEmiterController>().Enable(Move());
 	}
 
-	void Move ()
+	private bool Move ()
 	{
+		bool flyChecker = false;
         if (Input.GetKey("a"))
         {
 			FlyLeft();
+			flyChecker = true;
 		}
 		if (Input.GetKey("d"))
         {
 			FlyRight();
+			flyChecker = true;
 		}
         if (Input.GetKey("w"))
         {
             FlyUP();
-        }
+			flyChecker = true;
+		}
+		return flyChecker;
 	}
 
     private void FlyUP()
