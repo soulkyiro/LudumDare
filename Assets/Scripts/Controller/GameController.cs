@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameController : MonoBehaviour
 {
-    private LevelController levelController;
+	private LevelController levelController;
     private NavigationController navigatorController;
 
     public int NUM_MAX_DEATHS = 2;
@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
 
     void Start() {
         navigatorController = ApplicationController.Instance.NavigationController;
+		LevelController = gameObject.AddComponent<LevelController>();
     }
 
     public int NumOfDeaths
