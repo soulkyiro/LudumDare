@@ -3,9 +3,9 @@ using System.Collections;
 
 public class MainViewController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        ApplicationController.Instance.GameController.guiInterface();
+	void Start () 
+    {
+        ApplicationController.Instance.GUIController.View = "MAIN";
 	}
 
 }
