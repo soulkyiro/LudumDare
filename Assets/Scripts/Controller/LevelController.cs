@@ -5,9 +5,11 @@ public class LevelController : MonoBehaviour
 {
 
     private bool pause;
+    private int checkPoints;
 
 	void Start()
     {
+        checkPoints = 0;
         ApplicationController.Instance.GameController.LevelController = this;
 		pause = false;
 	}
@@ -52,4 +54,8 @@ public class LevelController : MonoBehaviour
 	public void Restart (){
         ApplicationController.Instance.GameController.RestartLevel();
 	}
+
+    public void CheckPointCounts() {
+        checkPoints++;
+    }
 }

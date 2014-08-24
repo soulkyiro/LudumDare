@@ -12,7 +12,6 @@ public class SignalController : MonoBehaviour {
             if (other.gameObject.tag == "Astronaut")
             {
                 Invoke("CheckPoint", 0.5f);
-                Debug.Log("Lo tienes");
             }
         }
 	}
@@ -45,6 +44,7 @@ public class SignalController : MonoBehaviour {
         {
             check = true;
             Debug.Log("Check Point");
+            ApplicationController.Instance.GameController.LevelController.CheckPointCounts();
         }
     }
 }

@@ -42,21 +42,18 @@ public class Astronaut : MonoBehaviour {
 
     private void FlyUP()
     {
-        Debug.Log("UP");
         gameObject.transform.rigidbody2D.AddForce(Vector2.up * rocketForce);
     }
 	
 	void FlyLeft ()
 	{
         gameObject.transform.rigidbody2D.AddForce(Vector2.right * horizontalForce);
-		Debug.Log ("RIGHT");
         if (!facingLeft) Flip();
 	}
 
 	void FlyRight ()
 	{
         gameObject.transform.rigidbody2D.AddForce(Vector2.right * -horizontalForce);
-		Debug.Log ("LEFT");
         if (facingLeft) Flip();
 	}
 
