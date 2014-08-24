@@ -3,16 +3,15 @@ using System.Collections;
 
 public class GUIController : MonoBehaviour {
     private float _h, _w;
-    public GUISkin mySkin = null;
+    
     private string view;
     private int fontSize;
+    private Texture2D title = Resources.Load("Textures/Text/connected") as Texture2D;
+    private Texture2D tutorial = Resources.Load("Textures/Images/tutorial") as Texture2D;
 
+    public GUISkin mySkin = null;
     public Texture2D imagenFondo;
     public Texture2D imagenFrente;
-    public Texture2D title = Resources.Load("Textures/connected") as Texture2D;
-    public Texture2D tutorial = Resources.Load("Textures/tutorial") as Texture2D;
-
-    //public GUIStyle myStyle;
 
     public string View
     {
@@ -22,16 +21,13 @@ public class GUIController : MonoBehaviour {
 
     void Start()
     {
-        //myStyle = new GUIStyle();
-        //myStyle.fontSize = (int)_w / 12;
         View = "MAIN";
     }
 	
 	void Update () {
         _h = Screen.height;
         _w = Screen.width;
-        fontSize = (int)_w / 30;
-        //myStyle.fontSize = (int)_w / 30;
+        fontSize = (int)_w / 32;
 	}
 
     void OnGUI() 
@@ -71,7 +67,7 @@ public class GUIController : MonoBehaviour {
             ApplicationController.Instance.GameController.PlayGame();
         }
 
-        if (GUI.Button(new Rect((_w / 4), (_h / 6) * 3, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("INSTRUCTIONS")))
+        if (GUI.Button(new Rect((_w / 6) * 1.25f, (_h / 6) * 3, (_w / 6) * 2f, (_h / 8)), new GUIContent("INSTRUCTIONS")))
         {
             Debug.Log("INSTRUCTIONS");
             View = "INSTRUCTIONS";
