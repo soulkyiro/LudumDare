@@ -6,6 +6,9 @@ public class GUIController : MonoBehaviour {
     public GUISkin mySkin = null;
     private string view;
 
+    public Texture2D imagenFondo;
+    public Texture2D imagenFrente;
+
     public string View
     {
         get { return view; }
@@ -21,7 +24,6 @@ public class GUIController : MonoBehaviour {
         _h = Screen.height;
         _w = Screen.width;
 	}
-
 
     void OnGUI() 
     {
@@ -41,9 +43,6 @@ public class GUIController : MonoBehaviour {
             case "INSTRUCTIONS":
                 GUIInstructionsPanel();
                 break;
-            case "SCORE":
-                GUIScorePanel();
-                break;
             case "MENU":
                 GUIMenuPanel();
                 break;
@@ -55,13 +54,10 @@ public class GUIController : MonoBehaviour {
 
     void GUIMainPanel()
     {
-        GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "MAIN SCREEN");
-
-
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 2, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PLAY")))
         {
             Debug.Log("PLAY");
-			ApplicationController.Instance.NavigationController.NextScene("Scene Silver");
+			ApplicationController.Instance.NavigationController.NextScene("Scene");
             ApplicationController.Instance.GameController.PlayGame();
         }
 
@@ -69,12 +65,6 @@ public class GUIController : MonoBehaviour {
         {
             Debug.Log("INSTRUCTIONS");
             View = "INSTRUCTIONS";
-        }
-
-        if (GUI.Button(new Rect((_w / 4), (_h / 6) * 4, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("SCORE")))
-        {
-            Debug.Log("SCORE");
-            View = "SCORE";
         }
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("CREDITS")))
@@ -88,7 +78,24 @@ public class GUIController : MonoBehaviour {
     {
         GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "CREDITS");
 
-        GUI.Label (new Rect(_w/6, _h/6, (_w/6) * 4, (_h/6) * 3),"");
+        GUI.Label (new Rect(_w/9, _h/9, (_w/6) * 4, (_h/6) * 4),"Project leader: Estanislao Castro Nieblas \n" +
+            "Main programmer: Estanislao Castro Nieblas \n" +
+            "Level designers: Silverio Cardona Rodríguez and Israel Fleitas \n" +
+            "Programmer: Silverio Cardona Rodríguez \n" +
+            "Sound: Israel Fleitas \n" +
+            "Illustrator: Francisco Montesdeoca Vega \n" +
+            "Tester: Carlota Texeira Saavedra \n" +
+            "Marketing: Israel Fleitas \n" +
+            "Editor and Community manager: Carlota Texeira Saavedra \n" +
+            
+            "Sounds \n" +
+            "RocketBag clip: Joshun \n" +
+            "Signal clip: GameAudio \n" +
+            "Music: Betray_09 \n" +
+
+            "Skybox: HedgehogTeam                      THANK YOU"
+            );
+
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("BACK")))
         {
@@ -112,11 +119,14 @@ public class GUIController : MonoBehaviour {
 
     void GUIPlayPanel()
     {
-        GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "PLAY");
+        //GUI.BeginGroup(new Rect(10,10,256,10));
+        //    GUI.Box(new Rect(0, 0, 256, 10), imagenFondo);
+        //    GUI.BeginGroup(new Rect(0, 0, 256, 10));
+        //        GUI.Box(new Rect(0, 0, 128, 10),imagenFrente);
+        //    GUI.EndGroup();
+        //GUI.EndGroup();
 
-        GUI.Label(new Rect(_w / 6, _h / 6, (_w / 6) * 4, (_h / 6) * 3), "");
-
-        if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PAUSE")))
+        if (GUI.Button(new Rect((_w / 4), 0, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PAUSE")))
         {
             ApplicationController.Instance.GameController.LevelController.Pause();
             View = "MENU";
@@ -128,7 +138,12 @@ public class GUIController : MonoBehaviour {
     {
         GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "MENU");
 
-        GUI.Label(new Rect(_w / 6, _h / 6, (_w / 6) * 4, (_h / 6) * 3), "");
+        if (GUI.Button(new Rect((_w / 4), (_h / 6) * 2, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("EXIT")))
+        {
+            Debug.Log("EXIT");
+            ApplicationController.Instance.GameController.LevelController.Pause();
+            ApplicationController.Instance.NavigationController.PreviousScene();
+        }
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("BACK")))
         {
@@ -137,18 +152,4 @@ public class GUIController : MonoBehaviour {
             Debug.Log("BACK");
         }
     }
-
-    void GUIScorePanel()
-    {
-        GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "SCORE");
-
-        GUI.Label(new Rect(_w / 6, _h / 6, (_w / 6) * 4, (_h / 6) * 3), "");
-
-        if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("BACK")))
-        {
-            View = "MAIN";
-            Debug.Log("BACK");
-        }
-    }
-
 }

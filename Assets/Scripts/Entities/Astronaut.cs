@@ -44,8 +44,18 @@ public class Astronaut : MonoBehaviour {
             FlyUP();
 			flyChecker = true;
 		}
+        if (Input.GetKey("s"))
+        {
+            FlyDown();
+            flyChecker = true;
+        }
 		return flyChecker;
 	}
+
+    private void FlyDown()
+    {
+        gameObject.transform.rigidbody2D.AddForce(Vector2.up * -rocketForce);
+    }
 
     private void FlyUP()
     {

@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
 	private LevelController levelController;
     private NavigationController navigatorController;
 
-    public int NUM_MAX_DEATHS = 2;
+    public int NUM_MAX_DEATHS = 3;
     private int numOfDeaths= 0;
 
     void Start() {
