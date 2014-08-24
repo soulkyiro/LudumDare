@@ -5,11 +5,15 @@ public class GUIController : MonoBehaviour {
     private float _h, _w;
     public GUISkin mySkin = null;
     private string view;
+    private int fontSize;
 
     public Texture2D imagenFondo;
     public Texture2D imagenFrente;
     public Texture2D title = Resources.Load("Textures/connected") as Texture2D;
     public Texture2D tutorial = Resources.Load("Textures/tutorial") as Texture2D;
+
+    //public GUIStyle myStyle;
+
     public string View
     {
         get { return view; }
@@ -18,20 +22,23 @@ public class GUIController : MonoBehaviour {
 
     void Start()
     {
+        //myStyle = new GUIStyle();
+        //myStyle.fontSize = (int)_w / 12;
         View = "MAIN";
     }
 	
 	void Update () {
         _h = Screen.height;
         _w = Screen.width;
+        fontSize = (int)_w / 30;
+        //myStyle.fontSize = (int)_w / 30;
 	}
 
     void OnGUI() 
     {
-        if (mySkin != null)
-        {
-            GUI.skin = mySkin;
-        }
+        GUI.skin.box.fontSize = fontSize;
+        GUI.skin.button.fontSize = fontSize;
+        GUI.skin.label.fontSize = fontSize;
 
         switch (View)
         {
@@ -81,22 +88,35 @@ public class GUIController : MonoBehaviour {
     {
         GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "CREDITS");
 
-        GUI.Label (new Rect(_w/9, _h/9, (_w/6) * 4, (_h/6) * 4),"Project leader: Estanislao Castro Nieblas \n" +
-            "Main programmer: Estanislao Castro Nieblas \n" +
-            "Level designers: Silverio Cardona Rodríguez and Israel Fleitas \n" +
-            "Programmer: Silverio Cardona Rodríguez \n" +
-            "Sound: Israel Fleitas \n" +
-            "Illustrator: Francisco Montesdeoca Vega \n" +
-            "Tester: Carlota Texeira Saavedra \n" +
-            "Marketing: Israel Fleitas \n" +
-            "Editor and Community manager: Carlota Texeira Saavedra \n" +
-            
+        GUI.Label (new Rect(_w/9, _h/9, (_w/6) * 4, (_h/6) * 4),
+            "Estanislao Castro Nieblas \n" +
+            "Silverio Cardona Rodríguez \n" +
+            "Israel Fleitas \n" +
+            "Francisco Montesdeoca Vega \n" +
+            "Carlota Texeira Saavedra \n\n" +
             "Sounds \n" +
             "RocketBag clip: Joshun \n" +
             "Signal clip: GameAudio \n" +
             "Music: Betray_09 \n" +
 
-            "Skybox: HedgehogTeam                      THANK YOU"
+            "Skybox: HedgehogTeam            THANK YOU"
+
+            // "Project leader: Estanislao Castro Nieblas \n" +
+            //"Main programmer: Estanislao Castro Nieblas \n" +
+            //"Level designers: Silverio Cardona Rodríguez and Israel Fleitas \n" +
+            //"Programmer: Silverio Cardona Rodríguez \n" +
+            //"Sound: Israel Fleitas \n" +
+            //"Illustrator: Francisco Montesdeoca Vega \n" +
+            //"Tester: Carlota Texeira Saavedra \n" +
+            //"Marketing: Israel Fleitas \n" +
+            //"Editor and Community manager: Carlota Texeira Saavedra \n" +
+            
+            //"Sounds \n" +
+            //"RocketBag clip: Joshun \n" +
+            //"Signal clip: GameAudio \n" +
+            //"Music: Betray_09 \n" +
+
+            //"Skybox: HedgehogTeam                      THANK YOU"
             );
 
 
