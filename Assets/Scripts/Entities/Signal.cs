@@ -13,5 +13,7 @@ public class Signal: MonoBehaviour {
 	private void SetActive ()
 	{
 		gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+        gameObject.GetComponent<AudioSource>().audio.Play();
+        Debug.Log(gameObject.GetComponent<AudioSource>().audio.isPlaying);
 	}
 }

@@ -45,6 +45,7 @@ public class SignalController : MonoBehaviour {
             check = true;
             Debug.Log("Check Point");
 			ApplicationController.Instance.GameController.LevelController.AddLetter(transform.parent.gameObject.name);
+            gameObject.GetComponent<AudioSource>().audio.Play();
         }
     }
 }
