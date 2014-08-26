@@ -53,6 +53,9 @@ public class GUIController : MonoBehaviour {
             case "PLAY":
                 GUIPlayPanel();
                 break;
+            case "FINISH":
+                GUIFinishPanel();
+                break;
         }
     }
 
@@ -62,20 +65,17 @@ public class GUIController : MonoBehaviour {
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 2, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PLAY")))
         {
-            Debug.Log("PLAY");
 			ApplicationController.Instance.NavigationController.NextScene("Scene");
             ApplicationController.Instance.GameController.PlayGame();
         }
 
         if (GUI.Button(new Rect((_w / 6) * 1.25f, (_h / 6) * 3, (_w / 6) * 2f, (_h / 8)), new GUIContent("INSTRUCTIONS")))
         {
-            Debug.Log("INSTRUCTIONS");
             View = "INSTRUCTIONS";
         }
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("CREDITS")))
         {
-            Debug.Log("CREDITS");
             View = "CREDITS";
         }
     }
@@ -119,7 +119,6 @@ public class GUIController : MonoBehaviour {
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("BACK")))
         {
             View = "MAIN";
-            Debug.Log("BACK");
         }
     }
 
@@ -127,29 +126,28 @@ public class GUIController : MonoBehaviour {
     {
         GUI.Label(new Rect((_w / 2) - (_w / 6), 0, (_w / 6) * 2, (_h / 6)), "INSTRUCTIONS");
 
-        GUI.Box(new Rect(_w / 9, _h / 9, (_w / 6) * 4, (_h / 6) * 4), tutorial);
+        GUI.Box(new Rect(_w / 9, _h / 9, (_w / 6) * 3, (_h / 6) * 3), tutorial);
+        GUI.Label(new Rect(_w / 9, (_h / 6) * 4, (_w / 6) * 4, (_h / 6) * 4), "The aim  of the game is activate the antennas of each world. ¡Good luck!");
 
         if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("BACK")))
         {
             View = "MAIN";
-            Debug.Log("BACK");
         }
     }
 
     void GUIPlayPanel()
     {
-        //GUI.BeginGroup(new Rect(10,10,256,10));
-        //    GUI.Box(new Rect(0, 0, 256, 10), imagenFondo);
-        //    GUI.BeginGroup(new Rect(0, 0, 256, 10));
-        //        GUI.Box(new Rect(0, 0, 128, 10),imagenFrente);
-        //    GUI.EndGroup();
+        //GUI.BeginGroup(new Rect(10, 10, 256, 10));
+        //GUI.Box(new Rect(0, 0, 256, 10), imagenFondo);
+        //GUI.BeginGroup(new Rect(0, 0, 256, 10));
+        //GUI.Box(new Rect(0, 0, 128, 10), imagenFrente);
+        //GUI.EndGroup();
         //GUI.EndGroup();
 
         if (GUI.Button(new Rect((_w / 4), 0, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("PAUSE")))
         {
             ApplicationController.Instance.GameController.LevelController.Pause();
             View = "MENU";
-            Debug.Log("PAUSE");
         }
     }
 
@@ -168,7 +166,14 @@ public class GUIController : MonoBehaviour {
         {
             ApplicationController.Instance.GameController.LevelController.Pause();
             View = "PLAY";
-            Debug.Log("BACK");
+        }
+    }
+
+    void GUIFinishPanel()
+    {
+        if (GUI.Button(new Rect((_w / 4), (_h / 6) * 5, (_w / 6) * 1.5f, (_h / 8)), new GUIContent("EXIT")))
+        {
+            ApplicationController.Instance.NavigationController.PreviousScene();
         }
     }
 }

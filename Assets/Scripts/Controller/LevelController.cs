@@ -8,10 +8,18 @@ public class LevelController : MonoBehaviour
     private bool pause;
 	private List<string> letters = new List<string>();
 	private string worlds = "worlds";
+    private AnimationController animationController;
+
+    public AnimationController AnimationController
+    {
+        get { return animationController; }
+        set { animationController = value; }
+    }
 
 	void Start()
     {
 		pause = false;
+        AnimationController = this.gameObject.AddComponent<AnimationController>();
 	}
 
 	public void Pause () 
@@ -38,7 +46,8 @@ public class LevelController : MonoBehaviour
     {
         //FinishState("Congratulation");
         Debug.Log("Congratulation");
-        ApplicationController.Instance.NavigationController.PreviousScene();
+        ApplicationController.Instance.NavigationController.ChangeBetweenScenes("Finish");
+        ApplicationController.Instance.GUIController.View = "FINISH";
     }
     
 	public void FinishState (string end){

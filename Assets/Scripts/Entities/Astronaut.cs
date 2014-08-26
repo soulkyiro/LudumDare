@@ -29,22 +29,22 @@ public class Astronaut : MonoBehaviour {
 	private bool Move ()
 	{
 		bool flyChecker = false;
-        if (Input.GetKey("a"))
+        if (Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow))
         {
 			FlyLeft();
 			flyChecker = true;
 		}
-		if (Input.GetKey("d"))
+        if (Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow))
         {
 			FlyRight();
 			flyChecker = true;
 		}
-        if (Input.GetKey("w"))
+        if (Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow))
         {
             FlyUP();
 			flyChecker = true;
 		}
-        if (Input.GetKey("s"))
+        if (Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow))
         {
             FlyDown();
             flyChecker = true;

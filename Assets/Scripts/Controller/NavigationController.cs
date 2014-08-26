@@ -7,6 +7,7 @@ public class NavigationController : MonoBehaviour
     public const string SCENE_INIT = "Init";
     public const string SCENE_MAIN = "Main";
     public const string SCENE_SCENE = "Scene";
+    public const string SCENE_FINISH = "Finish";
 	public const string SCENE_SILVER = "Scene (Silver)";
 
     public Stack<string> scenes;
